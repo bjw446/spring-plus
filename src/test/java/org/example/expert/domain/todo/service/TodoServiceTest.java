@@ -43,7 +43,7 @@ class TodoServiceTest {
 
         // when
         TodoSaveResponse response =
-                todoService.saveTodo(authUser, request);
+                todoService.saveTodo(authUser.getId(), request);
 
         // then
         assertThat(response).isNotNull();
