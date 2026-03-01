@@ -31,6 +31,7 @@ class TodoServiceTest {
     @Test
     void todoSave_정상_저장_테스트() {
 
+        // given
         User user = new User("test@test.com", "1234", UserRole.USER, "닉네임");
         userRepository.save(user);
 
@@ -40,9 +41,11 @@ class TodoServiceTest {
         TodoSaveRequest request =
                 new TodoSaveRequest("제목", "내용");
 
+        // when
         TodoSaveResponse response =
                 todoService.saveTodo(authUser, request);
 
+        // then
         assertThat(response).isNotNull();
         assertThat(todoRepository.findById(response.getId()))
                 .isPresent();
